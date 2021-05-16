@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"name": "commands",
+			"path": "."
+		},
+		{
+			"name": "CoviCompanion",
+			"path": "../../../CoviCompanion"
+		}
+	],
+	"settings": {}
+}
