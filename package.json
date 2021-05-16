@@ -1,0 +1,27 @@
+{
+  "name": "CoviCompanion",
+  "version": "1.0.0",
+  "description": "Discord Bot using Cowin API for vaccination and covid related Activities",
+  "main": "index.js",
+  "dependencies": {
+    "discord.js": "^12.5.3",
+    "dotenv": "^9.0.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./src/cc.js",
+    "dev": "nodemon ./src/cc.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/r0king/CoviCompanion.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/r0king/CoviCompanion/issues"
+  },
+  "homepage": "https://github.com/r0king/CoviCompanion#readme"
+}
