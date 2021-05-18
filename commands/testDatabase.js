@@ -7,17 +7,7 @@ async function main() {
   console.log(key);
 
 }
-
-
-
-
-
-
-
-
-
-
-
+let db = main()
 // console.log("01");
 
 // const MongoClient = require('mongodb').MongoClient;

@@ -8,11 +8,11 @@ module.exports = {
 
 
     const details = [
-      'Enter your Name.',
-      'Enter your Phone Number',
-      'Enter your Date of Birth',
-      'Enter State',
-      'Enter District',
+      'Enter your Name:',
+      'Enter your Phone Number:',
+      'Enter your DOB:',
+      'Enter State:',
+      'Enter District:',
     ]
     let filter = (msg) => !msg.author.bot;
     let counter = 0;
@@ -45,6 +45,8 @@ module.exports = {
         console.log(detail[detail.length - 1], value.content);
         msg.channel.send(detail[detail.length - 1]  + ' '+value.content);
       })
+
+      msg.reply(`Thank you for registering!!`);
     })
   },
 
