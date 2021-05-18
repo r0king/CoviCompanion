@@ -4,6 +4,7 @@
   "description": "Discord Bot using Cowin API for vaccination and covid related Activities",
   "main": "index.js",
   "dependencies": {
+    "@replit/database": "^2.0.1",
     "discord.js": "^12.5.3",
     "dotenv": "^9.0.2",
     "mongodb": "^3.6.6"

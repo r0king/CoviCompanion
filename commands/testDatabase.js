@@ -1,13 +1,13 @@
-async function main() {
+// async function main() {
 
-  const Client = require("@replit/database");
-  const client = new Client();
-  await Client.set("key", "value");
-  let key = await Client.get("key");
-  console.log(key);
+//   const Client = require("@replit/database");
+//   const client = new Client();
+//   await Client.set("key", "value");
+//   let key = await Client.get("key");
+//   console.log(key);
 
-}
-let db = main()
+// }
+// let db = main()
 // console.log("01");
 
 // const MongoClient = require('mongodb').MongoClient;
