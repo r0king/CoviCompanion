@@ -5,9 +5,11 @@
   "main": "index.js",
   "dependencies": {
     "@replit/database": "^2.0.1",
+    "axios": "^0.21.1",
     "discord.js": "^12.5.3",
     "dotenv": "^9.0.2",
-    "mongodb": "^3.6.6"
+    "mongodb": "^3.6.6",
+    "replitdb-client": "^2.1.0"
   },
   "devDependencies": {},
   "scripts": {

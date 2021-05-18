@@ -6,6 +6,7 @@ const TOKEN = process.env.TOKEN;
 bot.commands = new Discord.Collection();
 const botCommands = require('./commands');
 
+  console.log("\x1b[34m")
 bot.login(TOKEN);
 Object.keys(botCommands).map(key => {
   bot.commands.set(botCommands[key].name, botCommands[key]);

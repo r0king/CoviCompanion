@@ -1,13 +1,27 @@
-// async function main() {
 
-//   const Client = require("@replit/database");
-//   const client = new Client();
-//   await Client.set("key", "value");
-//   let key = await Client.get("key");
-//   console.log(key);
+const Database = require("@replit/database")
+const db = new Database()
 
-// }
-// let db = main()
+module.exports = function(print) {
+
+  db.set("Hey ", "There ").then(() => {
+    console.log("\x1b[32m", "[+] Database created");
+    console.log("\x1b[34m")
+  });
+  db.list().then(keys => {
+    console.log(keys)
+  });
+
+  db.get("Hey").then(value => {
+    console.log(print)
+  });
+
+};
+
+
+
+
+
 // console.log("01");
 
 // const MongoClient = require('mongodb').MongoClient;
@@ -88,5 +102,6 @@
 // module.exports = {
 //   main : main().catch(console.error)
 // }
+
 
 // console.log("Bad");

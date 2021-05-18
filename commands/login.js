@@ -1,6 +1,6 @@
 module.exports = {
-  name: 'update',
-  description: 'update!',
+  name: 'login',
+  description: 'login!',
   execute(msg, args) {
     msg.reply('pong');
   },
