@@ -18,13 +18,21 @@ module.exports = {
     let counter = 0;
     let collector = msg.channel.createMessageCollector(filter, {
       max: details.length,
-      time: 20000
+      time: 1000 * 20
     });
 
     msg.channel.send(details[counter])
     collector.on('collect', m => {
       if (counter < details.length) {
         m.channel.send(details[++counter])
+        // var x = msg.content;
+        // if(counter === 1){
+        //   if (isNaN(x))
+        //   {
+        //     msg.reply('Please input a number')
+        //     return false;
+        //   }
+        // }
       }
     })
     collector.on('end', collected => {

@@ -3,5 +3,6 @@ module.exports = {
   description: 'update!',
   execute(msg, args) {
     msg.reply('pong');
+
   },
 };
