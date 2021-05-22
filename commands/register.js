@@ -1,5 +1,6 @@
 // const Discord = require('discord.js');
-
+const regex = new RegExp;
+const fs = require('fs');
 module.exports = {
   name: '!register',
   description: 'registeration',
@@ -14,7 +15,10 @@ module.exports = {
       'Enter State:',
       'Enter Pincode:',
     ]
-    let filter = (msg) => !msg.author.bot;
+    const filter = (msg) => !msg.author.bot && msg.author.bot === msg.author.bot
+
+    // const filterreg = (msg) => regex.test(msg.content)
+
     let counter = 0;
     let collector = msg.channel.createMessageCollector(filter, {
       max: details.length,
@@ -48,14 +52,25 @@ module.exports = {
       //   let collect = collected.next();
       //   console.log(collect);
       // }
+      data = {}
+      userdetail = [];
       collected.forEach((value) => {
         let detail = details[counter++].split(" ")
-        console.log(detail[detail.length - 1], value.content);
+        // console.log(detail[detail.length - 1], value.content);
+       
+        userdetail.push(detail[detail.length - 1] + ' ' + value.content) ;
+       
         msg.channel.send(detail[detail.length - 1]  + ' '+value.content);
       })
-
+      // console.log(userdetail)
+      data[msg.author.id] = userdetail;
+      console.log(data)
+      var userData = fs.readFileSync('data.json');
+      var jsonObj= JSON.parse(userData);
+      jsonObj.push(data)
       msg.reply(`Thank you for registering!!`);
     })
+    
   },
 
 
