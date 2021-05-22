@@ -13,6 +13,7 @@ module.exports = {
       'Enter your DOB:',
       'Enter State:',
       'Enter District:',
+      'Enter your Pincode:'
     ]
     let filter = (msg) => !msg.author.bot;
     let counter = 0;
