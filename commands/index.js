@@ -7,5 +7,5 @@ module.exports = {
   CheckSlot: require('./checkslot'),
 
 };
-let db = require('./testDatabase');
-db("Success");
+// let db = require('./testDatabase');
+// db("Success");

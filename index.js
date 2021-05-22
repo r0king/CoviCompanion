@@ -1,4 +1,6 @@
-
+// undefined
+const dotenv = require('dotenv');
+dotenv.config();
 const Discord = require('discord.js');
 // const WOKcommands = require('wokcommands');
 const bot = new Discord.Client();
@@ -7,7 +9,9 @@ bot.commands = new Discord.Collection();
 const botCommands = require('./commands');
 
   console.log("\x1b[34m")
-bot.login(TOKEN);
+bot.login(TOKEN).catch((e)=>{
+  console.log("[-] unable to log in",e);
+});
 Object.keys(botCommands).map(key => {
   bot.commands.set(botCommands[key].name, botCommands[key]);
 });

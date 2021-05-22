@@ -1,60 +1,102 @@
 const axios = require('axios')
 
+// const {
+//     getStates,
+//     getListofDistricts,
+//     findByPin,
+//     findByDistrict,
+//     calendarByPin,
+//     calendarByDistrict
+// } = require('./cowinapi')
+
 module.exports = {
   name: 'checkslot',
   description: 'checkslot!',
   execute(msg, args) {
-    msg.reply('pong');
+    msg.reply("pong");
+    axios({
+      method: 'get',
+      url: `https://cdn-api.co-vin.in/api/v2/admin/location/districts/17`,
+      headers: {
+          'accept': 'application/json',
+          'Accept-Language': 'en_US',
+          'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1'
+      }
+  })
+      .then(function (response) {
+        if (response.data.districts !== undefined) {
+         
+        let alldistricts ='districts:\n'
+            response.data.districts.forEach((k, v) => 
+            { 
+              alldistricts += `\t${k.district_id}: ${k.district_name} \n`;
+              }
+              );
+              msg.channel.send(alldistricts);
+            return {
+                  status: true,
+                  result: response.data.districts
+              }
+          } else {
+              throw 'e'
+          }
+      })
+      .catch(function (error) {
+          return {
+              status: false,
+              message: "Sorry that's an error"
+          }
+      })
+
   },
 };
-async function testState() {
-  const allstates = await getStates()
-  console.log(allstates)
-}
-// testState();
 
-async function getStates() { /* https://apisetu.gov.in/public/marketplace/api/cowin/cowin-public-v2#/Metadata%20APIs/states */
+// const axios = require('axios')
+// const {
+//     getStates,
+//     getListofDistricts,
+//     findByPin,
+//     findByDistrict,
+//     calendarByPin,
+//     calendarByDistrict
+// } = require('./cowinapi')
+// module.exports = {
+//   name: 'checkslot',
+//   description: 'checkslot!',
+//   execute(msg, args) {
+//     msg.reply("pong");
+//     axios({
+//       method: 'get',
+//       url: 'https://cdn-api.co-vin.in/api/v2/admin/location/states',
+//       headers: {
+//           'accept': 'application/json',
+//           'Accept-Language': 'en_US',
+//           'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1'
+//       }
+//   })
+//       .then(function (response) {
+//           if (response.data.states !== undefined) {
+//             let allstates ='States:\n\t'
+//             response.data.states.forEach((k, v) => 
+//             { 
+//               allstates += `\t${v}: ${k.state_name} \n`;
+//               }
+//               );
+//               msg.channel.send(allstates);
+//             return {
+//                   status: true,
+//                   result: response.data.states
+//               }
+//           } else {
+//               throw 'e'
+//           }
+//       })
+//       .catch(function (error) {
+//           return {
+//               status: false,
+//               message: "Sorry that's an error"
+//           }
+//       })
 
-  console.log("01")
-  let states = axios({
-    method: 'get',
-    url: 'https://cdn-api.co-vin.in/api/v2/admin/location/states',
-    headers: {
-      'accept': 'application/json',
-      'Accept-Language': 'en_US',
-      
-      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36'
-  
-
-    }
-  }
-  )
-    .then(function(response) {
-
-      console.log("02")
-      console.log(response)
-      if (response.data.states !== undefined) {
-        return {
-          status: true,
-          result: response.data.states
-        }
-      } else {
-        throw 'e'
-      }
-    })
-    .catch(function(error) {
-
-      console.log("03")
-      return {
-        error:error,
-        status: false,
-        message: "Sorry that's an error"
-      }
-    })
-
-  console.log("04")
-  return states;
-
-}
-
-console.log("05")
+//   },
+// };

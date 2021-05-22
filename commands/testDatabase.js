@@ -1,22 +1,22 @@
 
-const Database = require("@replit/database")
-const db = new Database()
+// const Database = require("@replit/database")
+// const db = new Database()
 
-module.exports = function(print) {
+// module.exports = function(print) {
 
-  db.set("Hey ", "There ").then(() => {
-    console.log("\x1b[32m", "[+] Database created");
-    console.log("\x1b[34m")
-  });
-  db.list().then(keys => {
-    console.log(keys)
-  });
+//   db.set("Hey ", "There ").then(() => {
+//     console.log("\x1b[32m", "[+] Database created");
+//     console.log("\x1b[34m")
+//   });
+//   db.list().then(keys => {
+//     console.log(keys)
+//   });
 
-  db.get("Hey").then(value => {
-    console.log(print)
-  });
+//   db.get("Hey").then(value => {
+//     console.log(print)
+//   });
 
-};
+// };
 
 
 
