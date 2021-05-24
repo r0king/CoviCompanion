@@ -5,7 +5,7 @@ const MongoClient = require('mongodb').MongoClient;
 
 let data = {}
 module.exports = {
-  name: '!register',
+  name: '/register',
   description: 'registeration',
   execute(msg, args) {
     console.log(msg.content);

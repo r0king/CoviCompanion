@@ -1,7 +1,7 @@
 const axios = require('axios')
 
 module.exports = {
-    name: 'checkslot',
+    name: '/checkslot',
     description: 'checkslot!',
     execute(msg, args) {
         const MongoClient = require('mongodb').MongoClient;
