@@ -4,10 +4,11 @@ module.exports = {
   name: 'checkslot',
   description: 'checkslot!',
   execute(msg, args) {
-    msg.reply("pong");
+    var pin = 683576;
+    var date = "24-05-2021";
     axios({
       method: 'get',
-      url: `https://cdn-api.co-vin.in/api/v2/admin/location/districts/17`,
+      url: `https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByPin?pincode=${pin}&date=${date}`,
       headers: {
         'accept': 'application/json',
         'Accept-Language': 'en_US',
@@ -16,22 +17,14 @@ module.exports = {
     })
       .then(function(response) {
 
-        console.log(response);
-        if (response.data.districts !== undefined) {
+        let cl = response.data.sessions;
 
-          let alldistricts = 'districts:\n'
-          response.data.districts.forEach((k, v) => {
-            alldistricts += `\t${k.district_id}: ${k.district_name} \n`;
-          }
-          );
-          msg.channel.send(alldistricts);
-          return {
-            status: true,
-            result: response.data.districts
-          }
-        } else {
-          throw 'e'
-        }
+        cl.forEach(function(item,index){
+          
+          console.log(item);
+        
+        });
+       
       })
       .catch(function(error) {
         console.log(error);
