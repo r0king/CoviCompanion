@@ -18,7 +18,7 @@ module.exports = {
       'Enter State:',
       'Enter Pincode:',
     ]
-    const filter = (msg) => !msg.author.bot && msg.author.bot === msg.author.bot
+    const filter = (msg) => !msg.author.bot
 
     // const filterreg = (msg) => regex.test(msg.content)
 
