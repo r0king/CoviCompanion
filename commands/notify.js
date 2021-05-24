@@ -4,9 +4,23 @@ module.exports = {
   name: 'notify',
   description: 'notification!',
   execute(msg, args) {
+
+    msg.reply('You will be notified for slot availability hourly');
+
     setInterval(() => {
-    pincode = "683579";
-    date = "24-05-2021";
+      
+    var date = new Date();
+    var dd = String(date.getDate()).padStart(2, '0');
+    var mm = String(date.getMonth() + 1).padStart(2, '0');
+    var yyyy = date.getFullYear();
+    date = dd + '-' + mm + '-' + yyyy;
+
+    if(args.length !== 0){
+        date = args;
+    }
+    pincode = "673004";
+    console.log(date);
+
     axios({
       method: 'get',
       url: `https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByPin?pincode=${pincode}&date=${date}`,
@@ -18,21 +32,27 @@ module.exports = {
   })
       .then(function (response) {
           if (response.data.sessions !== undefined) {
+              console.log(response.data.sessions);
 
-
-          let allsessions = 'Doses available:\n'
-          response.data.sessions.forEach((k, v) => {
-            allsessions += ` First dose available :${k.available_capacity_dose1}\n Second dose available :${k.available_capacity_dose2} \n Total dose :${k.available_capacity}\n \n`;
-            if(k.available_capacity === 0){
-              msg.channel.send("\nSLOT NOT AVAILABLE!!\n\n")
-            }          
-          }
-          );
-          msg.channel.send(allsessions);
-              return {
-                  status: true,
-                  result: response.data.sessions
+            if(response.data.sessions.length === 0){
+                msg.reply('NO VACCINATION CENTER IS AVAILABLE FOR BOOKING!!')
+                exit(0);
               }
+
+          
+          response.data.sessions.forEach((k, v) => { 
+            let allsessions = '\nDoses available:\n'
+            allsessions += ` First dose available :${k.available_capacity_dose1}\n Second dose available :${k.available_capacity_dose2} \n Total dose :${k.available_capacity}\n`;          
+            if(k.available_capacity === 0){
+                msg.channel.send(`For ${k.min_age_limit}+ \nSLOT NOT AVAILABLE!!\n`) 
+              }
+            else if(k.available_capacity !==0 ){
+                msg.channel.send(`\nFor ${k.min_age_limit}+  ${allsessions} `)
+                msg.reply('\nSLOT AVAILABLE!!, To register please click on this link to go the official CO-WIN site : https://www.cowin.gov.in/home')
+              }
+        }
+          );
+         
           } else {
               throw 'e'
           }
@@ -43,8 +63,7 @@ module.exports = {
               message: "Sorry that's an error"
           }
       })
-
-    },300*1000);
+    },5*1000);
   }
 
 };

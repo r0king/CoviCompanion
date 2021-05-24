@@ -14,7 +14,7 @@ module.exports = {
     const details = [
       'Enter your Name:',
       'Enter your Phone Number:',
-      'Enter your DOB:',
+      'Enter your Age:',
       'Enter State:',
       'Enter Pincode:',
     ]
