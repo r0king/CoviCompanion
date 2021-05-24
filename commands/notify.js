@@ -63,7 +63,7 @@ module.exports = {
               message: "Sorry that's an error"
           }
       })
-    },5*1000);
+    },3600*1000);
   }
 
 };
