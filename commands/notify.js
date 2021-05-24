@@ -1,7 +1,7 @@
 const axios = require('axios')
 
 module.exports = {
-  name: 'notify',
+  name: '/notify',
   description: 'notification!',
   execute(msg, args) {
 
