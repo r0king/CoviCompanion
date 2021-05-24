@@ -1,6 +1,6 @@
 // const Discord = require('discord.js');
 const regex = new RegExp;
-const fs = require('fs');
+
 const MongoClient = require('mongodb').MongoClient;
 
 let data = {}
