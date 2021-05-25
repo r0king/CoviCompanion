@@ -4,10 +4,28 @@ module.exports = {
   name: '/notify',
   description: 'notification!',
   execute(msg, args) {
+    const MongoClient = require('mongodb').MongoClient;
+        const client = new MongoClient(process.env.ATLAS, {
+            useUnifiedTopology: true
+        });
+        let pincode = ''
+        client.connect(err => {
+            const collection = client.db("Covid_UserTest").collection("User01");
+            collection.findOne({
+                "id":msg.author.id
+            }, 
+            
+              function (err, result) {
+                if (err) throw err;
+                pincodeList = result.details[4].split(' ');
+                pincode = pincodeList[1];
+                client.close();
+            } )
+          
 
     msg.reply('You will be notified for slot availability hourly');
 
-    var not = setInterval(() => {
+    setInterval(() => {
       
     var date = new Date();
     var dd = String(date.getDate()).padStart(2, '0');
@@ -18,11 +36,7 @@ module.exports = {
     if(args.length !== 0){
         date = args;
     }
-    else if(args === 'off'){
-      msg.reply('You have disabled hourly notification for slot availability')
-      clearInterval(not)
-      exit(0)
-    }
+
     console.log(date);
 
     axios({
@@ -67,8 +81,8 @@ module.exports = {
               message: "Sorry that's an error"
           }
       })
-    },5*1000);
+    },3600*1000);
   }
-
+        )}
 };
 
