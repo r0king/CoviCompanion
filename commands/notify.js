@@ -19,6 +19,7 @@ module.exports = {
         date = args;
     }
     else if(args === 'off'){
+      msg.reply('You have disabled hourly notification for slot availability')
       clearInterval(not)
       exit(0)
     }
