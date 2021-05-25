@@ -6,8 +6,8 @@ This project utilizes the COWIN APIs to run a discord bot (CoviCompanion) to hel
 
 ## Team Members
 
-1. [Royal Babu] (https://github.com/r0king)
-2. [Sidharth K Ajith] (https://github.com/Sid9021)
+1. [Royal Babu](https://github.com/r0king)
+2. [Sidharth K Ajith](https://github.com/Sid9021)
 
 ## Team ID
 
@@ -34,13 +34,23 @@ Dotenv – 9.0.2
 Mongodb – 3.6.6
 
 ## How to configure
+Configure the .env files
+```
+TOKEN=<YOUR_SECRETS_HERE>
+ATLAS=<YOUR_SECRETS_HERE>
+```
 
-  ## Clone the Repository
+## Clone the Repository
 
-  `https://github.com/r0king/CoviCompanion.git`
+  `git clone https://github.com/r0king/CoviCompanion.git`
 
 
 ## How to Run
 
 
+```bash
+cd CoviCompanion
+npm install
+node index.js
+```
 
