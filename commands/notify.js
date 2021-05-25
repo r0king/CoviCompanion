@@ -7,7 +7,7 @@ module.exports = {
 
     msg.reply('You will be notified for slot availability hourly');
 
-    setInterval(() => {
+    var not = setInterval(() => {
       
     var date = new Date();
     var dd = String(date.getDate()).padStart(2, '0');
@@ -18,7 +18,10 @@ module.exports = {
     if(args.length !== 0){
         date = args;
     }
-    pincode = "673004";
+    else if(args === 'off'){
+      clearInterval(not)
+      exit(0)
+    }
     console.log(date);
 
     axios({
@@ -63,7 +66,7 @@ module.exports = {
               message: "Sorry that's an error"
           }
       })
-    },3600*1000);
+    },5*1000);
   }
 
 };

@@ -3,6 +3,7 @@ module.exports = {
   Register: require('./register'),
   Notify: require('./notify'),
   CheckSlot: require('./checkslot'),
+  Help: require('./help')
 
 };
 // let db = require('./testDatabase');
